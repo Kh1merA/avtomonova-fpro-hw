@@ -82,9 +82,9 @@ alert(result_str);
 // console.log(`Сума парних дільників: ${sum}`);
 
 //Task 12
-// for(let i = 1; i <= 9; i++){
+// for(let i = 1; i <= 10; i++){
 //     console.log(`Multiplication table by ${i}`);
-//     for(let j = 1; j <= 9; j++){
+//     for(let j = 1; j <= 10; j++){
 //         console.log(`${i} * ${j} = ${i * j}`);
 //     }
 // }
