@@ -1,6 +1,9 @@
 let numOrStr = prompt('input number or string');
 console.log(numOrStr);
 
+// У цьому коді ми використали switch (true)
+// для того, щоб дозволити виразам case використовувати
+// булеві значення для порівняння.
 switch (true) {
     case numOrStr === null:
         console.log('ви скасували');
