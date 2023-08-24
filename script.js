@@ -30,7 +30,7 @@ arr.forEach((item) => {
     }
 });
 
-console.log(`Мксимальний елемент масиву: ${max_element}`);
+console.log(`Максимальний елемент масиву: ${max_element}`);
 console.log(`Індекс максимального елементу масиву: ${ind_max_element}`);
 
 //Task 4
