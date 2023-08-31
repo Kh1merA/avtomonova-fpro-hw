@@ -1,5 +1,6 @@
 function pow(number, degree) {
     if(degree < 0){
+        //для розрахунку негативного ступеню
         if(degree === -1){
             return 1/number;
         }
