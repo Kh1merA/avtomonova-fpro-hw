@@ -7,7 +7,7 @@ function sumFunction(){
     return addFunction;
 }
 
-let sum = sumFunction(0);
+let sum = sumFunction();
 
 sum(3);
 sum(5);
