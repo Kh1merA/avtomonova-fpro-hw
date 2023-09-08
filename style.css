@@ -1,0 +1,10 @@
+.wrapper{
+    display: flex;
+}
+.input-info{
+    padding: 10px;
+    border-radius: 10px;
+    width: 200px;
+    height: 10px;
+    font-size: 20px;
+}
