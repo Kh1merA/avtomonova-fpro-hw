@@ -1,0 +1,42 @@
+.wrapper{
+    display: flex;
+    flex-direction: row;
+}
+.sidebar-menu{
+    width: 20%;
+    padding: 20px;
+    font-size: 20px;
+    font-family: "Proxima Nova Rg", sans-serif;
+
+}
+.sidebar-menu__title{
+    border-bottom: 2px solid black;
+    padding: 10px;
+}
+.sidebar-menu__items{
+    height: 80vh;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.main-content{
+    width: 50%;
+    padding: 20px;
+    font-size: 35px;
+    font-weight: 700;
+    font-family: "Proxima Nova Rg", sans-serif;
+}
+.main-content__category{
+    padding: 10px;
+}
+.product-info{
+    margin-top: 120px;
+    width: 30%;
+    padding: 20px;
+    font-size: 20px;
+    font-family: "Proxima Nova Rg", sans-serif;
+}
+.product-description{
+    margin-bottom: 20px;
+}
