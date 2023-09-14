@@ -1,3 +1,48 @@
+/*---Header content---*/
+.header{
+    padding: 20px 5px;
+    margin: 0 10px;
+    display: flex;
+    height: 70px;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo-block{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo{
+    width: 50px;
+    height: 50px;
+}
+.logo-text{
+    font-size: 24px;
+    font-weight: 700;
+    font-family: "Proxima Nova Rg", sans-serif;
+}
+.singUp{
+    text-decoration: none;
+    border-radius: 45px;
+    padding: 10px 20px;
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: #524f4e;
+    background: #d9d9d9;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+}
+
+.singUp:hover{
+    background: #2EE59D;
+    box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+    color: white;
+}
+
+/*---Main content---*/
 .wrapper{
     display: flex;
     flex-direction: row;
@@ -39,4 +84,43 @@
 }
 .product-description{
     margin-bottom: 20px;
+}
+
+.category{
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    height: 100px;
+    background-size: 100%;
+    color: white;
+}
+
+.product-block{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    border: 2px solid black;
+    margin: 5px;
+    height: 120px;
+}
+
+.product-image{
+    width: 30%;
+    background-size: 100%;
+}
+
+.product-text{
+    font-size: 40px;
+    font-weight: 400;
+}
+.info-button{
+    width: 200px;
+    font-size: 20px;
+    margin: 10px;
+}
+
+.info-bar-button{
+    width: 200px;
+    font-size: 20px;
 }

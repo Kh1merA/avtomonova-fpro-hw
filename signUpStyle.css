@@ -1,0 +1,53 @@
+body{
+    background: #2EE59D;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.regForm{
+    padding: 20px 50px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 45px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+    gap: 20px;
+}
+.logo-text{
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: black;
+}
+
+.sub-logo-text{
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: #524f4e;
+}
+
+.label-text{
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+    color: #524f4e;
+}
+
+.sex-checkboxes{
+    display: flex;
+    gap: 10px;
+}

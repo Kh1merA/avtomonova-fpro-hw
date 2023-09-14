@@ -1,14 +1,4 @@
 
-function addStyle(product){
-    product.style.padding = '10px';
-    product.style.fontSize = '20px';
-    product.style.fontWeight = '700';
-    product.style.height = '100px';
-    product.style.backgroundSize = '100%';
-    product.style.color = 'white';
-}
-
-
 let shopList = [{
     categoryName: 'Fruits',
     productsList: [{
@@ -71,7 +61,7 @@ shopList.forEach(item => {
     let product = document.createElement('button');
     product.textContent = item.categoryName;
     product.style.backgroundImage = `url(${item.categoryImg})`;
-    addStyle(product);
+    product.classList.add('category');
     product.addEventListener('click', () => {
         mainContent.innerHTML = '';
         infoBarDesc.textContent = '';
@@ -87,26 +77,16 @@ shopList.forEach(item => {
 function showProducts(products){
     products.forEach(product => {
         let productBlock = document.createElement('div');
-        productBlock.style.display = 'flex';
-        productBlock.style.justifyContent = 'space-between'
-        productBlock.style.alignItems = 'center';
-        productBlock.style.overflow = 'hidden';
-        productBlock.style.border = '2px solid black';
-        productBlock.style.margin = '5px';
-        productBlock.style.height = '120px';
+        productBlock.classList.add('product-block');
         let productImage = document.createElement('img');
         productImage.src = product.productImg;
-        productImage.style.width = '30%';
-        productImage.style.backgroundSize = '100%';
+        productImage.classList.add('product-image');
         let productText = document.createElement('div');
         productText.textContent = product.productName;
-        productText.style.fontSize = '40px';
-        productText.style.fontWeight = '400';
+        productText.classList.add('product-text');
         let infoButton = document.createElement('button');
         infoButton.textContent = 'More details';
-        infoButton.style.width = '200px';
-        infoButton.style.fontSize = '20px';
-        infoButton.style.margin = '10px';
+        infoButton.classList.add('info-button');
 
         infoButton.addEventListener('click', () => {
            infoBar.innerHTML = '';
@@ -125,8 +105,7 @@ function showInfo(product){
     infoBarName.textContent = product.productName;
     let infoBarButton = document.createElement('button');
     infoBarButton.textContent = 'Buy';
-    infoBarButton.style.width = '200px';
-    infoBarButton.style.fontSize = '20px';
+    infoBarButton.classList.add('info-bar-button');
     infoBarButton.addEventListener('click', () => {
         alert(`You successfully buy ${product.productName}!`);
         mainContent.innerHTML = '';
