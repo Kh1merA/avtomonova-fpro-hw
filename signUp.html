@@ -7,8 +7,10 @@
 </head>
 <body>
 <div class="wrapper">
-    <h2 class="logo-text">Fresh HUB</h2>
-    <div class="regForm">
+    <a href="index.html" class="logo-text">Fresh HUB</a>
+    <div class="error"></div>
+    <div class="success">Thanks for registration!</div>
+    <form class="regForm" id="form">
         <h3 class="sub-logo-text">Sign Up</h3>
         <label for="name" class="label-text">
             <input type="text" id="name" class="input-text"/> Name
@@ -49,7 +51,39 @@
         <label for="lan-check3" class="input-text">
             <input type="checkbox" id="lan-check3" value = "Spanish" name = "language"/> Spanish
         </label>
-        <button class="signUp" id="#save-btn">Save</button>
+        <button class="signUp" id="save-btn">Save</button>
+    </form>
+    <div class="user-info-table">
+        <h2 class="sub-logo-text">User Info</h2>
+        <div class="row-style">
+            <span class="label-text">Name</span>
+            <p class="input-text" id="userName"></p>
+        </div>
+        <div class="row-style">
+            <span class="label-text">Surname</span>
+            <p class="input-text" id="userSurname"></p>
+        </div>
+        <div class="row-style">
+            <span class="label-text">Birthdate</span>
+            <p class="input-text" id="userBirthDate"></p>
+        </div>
+        <div class="row-style">
+            <span class="label-text">Sex</span>
+            <p class="input-text" id="userSex"></p>
+        </div>
+        <div class="row-style">
+            <span class="label-text">City</span>
+            <p class="input-text" id="userCity"></p>
+        </div>
+        <div class="row-style">
+            <span class="label-text">Address</span>
+            <p class="input-text" id="userAddress"></p>
+        </div>
+        <div class="row-style">
+            <span class="label-text">Languages</span>
+            <p class="input-text" id="userLanguages"></p>
+        </div>
+
     </div>
 </div>
 <script src="signUpScript.js"></script>

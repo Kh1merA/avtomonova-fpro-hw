@@ -20,6 +20,9 @@ body{
     overflow: hidden;
 }
 .logo-text{
+    text-decoration: none;
+    padding: 20px;
+    display: block;
     font-size: 24px;
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
@@ -93,4 +96,44 @@ body{
     background: #2EE59D;
     box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
     color: white;
+}
+
+.error{
+    margin: 10px 0;
+    color: #D8000C;
+    background-color: #FFBABA;
+    padding: 20px 50px;
+    width: 500px;
+    border-radius: 45px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+    display: none;
+}
+
+.success{
+    margin: 10px 0;
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    padding: 20px 50px;
+    width: 500px;
+    border-radius: 45px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+    display: none;
+}
+
+.user-info-table{
+    padding: 40px 50px;
+    width: 500px;
+    flex-direction: column;
+    background: white;
+    border-radius: 45px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+    gap: 20px;
+    overflow: hidden;
+    display: none;
+}
+
+.row-style{
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }

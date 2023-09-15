@@ -1,3 +1,15 @@
+function userInfoFunc(userData){
+    document.querySelector('#userName').textContent = userData.name;
+    document.querySelector('#userSurname').textContent = userData.surname;
+    document.querySelector('#userBirthDate').textContent = userData.birthdate;
+    document.querySelector('#userSex').textContent = userData.sex;
+    document.querySelector('#userCity').textContent = userData.city;
+    document.querySelector('#userAddress').textContent = userData.address;
+    userData.language.forEach(lan => {
+        document.querySelector('#userLanguages').textContent += `${lan} `;
+    })
+}
+
 const userData = {
     name: '',
     surname: '',
@@ -41,9 +53,37 @@ document.querySelector('#address').addEventListener('input', (e) => {
 let lanChecks = document.querySelectorAll('input[name = "language"]');
 
 document.querySelector('#save-btn').addEventListener('click', (e) => {
+    userData.language = [];
 
     lanChecks.forEach(checkbox => {
         if(checkbox.checked) userData.language.push(checkbox.value);
     })
-    console.log(userData.language);
-})
+});
+
+document.querySelector('#form').addEventListener('submit', (e) => {
+    window.scrollTo({
+        top: 0,  // это координат где должен быть экран
+        behavior: 'smooth'  //Это анимация
+    });
+    let errorMarker = false;
+    let regForm = document.getElementsByClassName('regForm')[0];
+    let userInfo = document.getElementsByClassName('user-info-table')[0];
+    let successMessage = document.getElementsByClassName('success')[0];
+    let errorMessage = document.getElementsByClassName('error')[0];
+    for(let key in userData){
+        if(userData[key] === '' || userData[key].length === 0){
+            errorMessage.style.display = 'block';
+            errorMessage.textContent = `Please, input your ${key}`;
+            errorMarker = true;
+        }
+    }
+    if(!errorMarker){
+        errorMessage.style.display = 'none';
+        successMessage.style.display = 'block';
+        userInfoFunc(userData);
+        userInfo.style.display = 'flex';
+        regForm.style.display = 'none';
+    }
+    e.preventDefault();
+});
+
