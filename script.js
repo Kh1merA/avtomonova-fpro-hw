@@ -1,3 +1,31 @@
+//Create available smileys data
+const smileShop = ['😆', '😅', '😃', '😈', '😉', '😂', '🤩', '🤑', '😬', '😔', '😵', '🥳', '😩', '😱', '👽'];
+
+let addBlock = document.querySelector('#add-block');
+//Show available smileys
+function showAvailable() {
+    smileShop.forEach((item) => {
+        let smileElement = document.createElement('button');
+        smileElement.textContent = item;
+        smileElement.classList.add('smile-button');
+
+        smileElement.addEventListener('click', () => {
+            let newSmile = { smile: "", voteCount: 0};
+            newSmile.smile = item;
+
+            smileys.push(newSmile);
+
+            smileContainer.innerHTML = '';
+            voteContainer.innerHTML = '';
+            buttonContainer.innerHTML = '';
+            addBlock.style.display = "none";
+            initialization();
+        })
+
+        addBlock.append(smileElement);
+    })
+}
+
 //Create smileys data
 const smileys = [
     {
@@ -41,7 +69,7 @@ function updateVotes() {
 
 //Show smileys elements
 function showSmiles() {
-    smileys.forEach((item, index) => {
+    smileys.forEach((item) => {
         let smileElement = document.createElement('button');
         smileElement.textContent = item.smile;
         smileElement.classList.add('smile-button');
@@ -90,13 +118,7 @@ initialization();
 
 //Add button event
 document.querySelector('#add-button-container').addEventListener('click', () => {
-    let newSmile = { smile: "", voteCount: 0};
-    newSmile.smile = prompt('Input new smile', '😈');
-
-    smileys.push(newSmile);
-
-    smileContainer.innerHTML = '';
-    voteContainer.innerHTML = '';
-    buttonContainer.innerHTML = '';
-    initialization();
+    addBlock.style.display = "grid";
+    addBlock.innerHTML = '';
+    showAvailable();
 })
