@@ -1,0 +1,17 @@
+.input-box{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-bottom: 2px solid black;
+    margin: 30px 0;
+}
+
+.number-block{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#number-button{
+    width: 200px;
+}
