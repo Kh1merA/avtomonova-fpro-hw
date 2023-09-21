@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signUpStyle.css">
+</head>
+<body>
+<div class="wrapper">
+    <a href="index.html" class="logo-text">Fresh HUB</a>
+    <div class="error"></div>
+    <div class="success">Thanks for registration!</div>
+    <form class="regForm" id="form">
+        <h3 class="sub-logo-text">Sign Up</h3>
+        <label for="name" class="label-text">
+            <input type="text" id="name" class="input-text"/> Name
+        </label>
+        <label for="surname" class="label-text">
+            <input type="text" id="surname" class="input-text"/> Surname
+        </label>
+        <label for="birthdate" class="label-text">
+            <input type="text" id="birthdate" class="input-text"/> Birthdate
+        </label>
+        <div class="sex-radio">
+            <label for="sex-rd-1" class="label-text">
+                <input type="radio" id="sex-rd-1" name="sex" value="Male"/> M
+            </label>
+            <label for="sex-rd-2" class="label-text">
+                <input type="radio" id="sex-rd-2" name="sex" value="Female"/> W
+            </label>
+        </div>
+        <div class="city-block">
+            <select name="city" id="cities" class="cities-sel input-text">
+                <option>Kharkiv</option>
+                <option>Dripro</option>
+                <option>Cherkasy</option>
+                <option>Kyiv</option>
+                <option>Odessa</option>
+            </select>
+            <label for="cities" class="label-text">City</label>
+        </div>
+        <label for="address" class="label-text">Address</label>
+        <textarea name="address" id="address" cols="5" rows="2" class="input-text"></textarea>
+        <span class="label-text">Languages</span>
+        <label for="lan-check1" class="input-text">
+            <input type="checkbox" id="lan-check1" value = "Ukrainian" name = "language"/> Ukrainian
+        </label>
+        <label for="lan-check2" class="input-text">
+            <input type="checkbox" id="lan-check2" value = "English" name = "language"/> English
+        </label>
+        <label for="lan-check3" class="input-text">
+            <input type="checkbox" id="lan-check3" value = "Spanish" name = "language"/> Spanish
+        </label>
+        <button class="signUp" id="save-btn">Save</button>
+    </form>
+    <div class="user-info-table">
+        <h2 class="sub-logo-text">User Info</h2>
+        <div class="row-style">
+            <span class="label-text">Name</span>
+            <p class="input-text" id="userName"></p>
+        </div>
+        <div class="row-style">
+            <span class="label-text">Surname</span>
+            <p class="input-text" id="userSurname"></p>
+        </div>
+        <div class="row-style">
+            <span class="label-text">Birthdate</span>
+            <p class="input-text" id="userBirthDate"></p>
+        </div>
+        <div class="row-style">
+            <span class="label-text">Sex</span>
+            <p class="input-text" id="userSex"></p>
+        </div>
+        <div class="row-style">
+            <span class="label-text">City</span>
+            <p class="input-text" id="userCity"></p>
+        </div>
+        <div class="row-style">
+            <span class="label-text">Address</span>
+            <p class="input-text" id="userAddress"></p>
+        </div>
+        <div class="row-style">
+            <span class="label-text">Languages</span>
+            <p class="input-text" id="userLanguages"></p>
+        </div>
+
+    </div>
+</div>
+<script src="signUpScript.js"></script>
+</body>
+</html>
