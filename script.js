@@ -254,7 +254,7 @@ function showProducts(products){
 
 }
 
-//Shoe additional info and buy button
+//Show additional info and buy button
 function showInfo(product){
 
     infoBarDesc.textContent = product.productInfo + '\n';
