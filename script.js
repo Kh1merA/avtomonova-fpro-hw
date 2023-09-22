@@ -104,6 +104,7 @@ function showCategories(){
         product.style.backgroundImage = `url(${item.categoryImg})`;
         product.classList.add('category');
 
+        //Show products of chosen category
         product.addEventListener('click', () => {
             mainContent.innerHTML = '';
             infoBarDesc.textContent = '';
@@ -156,6 +157,7 @@ function showBasket(){
         let basketItemDelete = document.createElement('button');
         basketItemDelete.textContent = 'X';
         basketItemDelete.classList.add('basket-text');
+
         basketItemDelete.addEventListener('click', () => {
             infoBar.innerHTML = '';
             localStorage.removeItem(key);
