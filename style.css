@@ -7,6 +7,8 @@
     justify-content: space-between;
     align-items: center;
 }
+
+
 .logo-block{
     display: flex;
     align-items: center;
@@ -21,6 +23,25 @@
     font-weight: 700;
     font-family: "Proxima Nova Rg", sans-serif;
 }
+
+.right-bar{
+    display: flex;
+    gap: 20px;
+}
+
+.header-link{
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    letter-spacing: 3px;
+    text-decoration: underline;
+    color: black;
+}
+
+.header-link:hover{
+    text-decoration: none;
+}
+
 .singUp{
     text-decoration: none;
     border-radius: 45px;
@@ -43,10 +64,12 @@
 }
 
 /*---Main content---*/
+
 .wrapper{
     display: flex;
     flex-direction: row;
 }
+
 .sidebar-menu{
     width: 20%;
     padding: 20px;
@@ -123,4 +146,32 @@
 .info-bar-button{
     width: 200px;
     font-size: 20px;
+}
+
+.basket-item{
+    width: 500px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.basket-img{
+    width: 100px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.basket-text{
+    font-size: 20px;
+    font-weight: 600;
+    font-family: "Proxima Nova Rg", sans-serif;
+    margin: 0 20px;
+    z-index: 2;
+}
+.basket-block{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 700px;
 }
