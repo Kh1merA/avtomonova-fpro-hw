@@ -82,7 +82,6 @@
     padding: 10px;
 }
 .sidebar-menu__items{
-    height: 80vh;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -174,4 +173,19 @@
     gap: 10px;
     align-items: center;
     width: 700px;
+}
+
+.add-info{
+    display: none;
+    width: 400px;
+    padding: 20px 50px;
+    background: lightgrey;
+    border-radius: 45px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+    gap: 5px;
+    overflow: hidden;
+}
+
+.add-info-text{
+    font-weight: 400;
 }

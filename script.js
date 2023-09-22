@@ -1,4 +1,4 @@
-
+//Create product data
 let shopList = [{
     categoryName: 'Fruits',
     productsList: [{
@@ -77,6 +77,7 @@ let shopList = [{
     categoryImg: 'img/berries.jpg'
 }];
 
+//Init html blocks
 let mainTitle = document.getElementsByClassName('main-content__category')[0];
 let mainContent = document.getElementsByClassName('main-content__items')[0];
 let sideBar = document.getElementsByClassName('sidebar-menu__items')[0];
@@ -84,19 +85,25 @@ let infoBarName = document.getElementsByClassName('product-name')[0];
 let infoBarDesc = document.getElementsByClassName('product-description')[0];
 let infoBar = document.getElementsByClassName('button-wrapper')[0];
 
+
+//Show product's categories
 function showCategories(){
     document.querySelector('#page-title').innerHTML = 'Categories';
+
+    //Clean all page
     sideBar.innerHTML = '';
     mainContent.innerHTML = '';
     mainTitle.innerHTML = '';
     infoBarDesc.textContent = '';
     infoBarName.textContent = '';
     infoBar.innerHTML = '';
+
     shopList.forEach(item => {
         let product = document.createElement('button');
         product.textContent = item.categoryName;
         product.style.backgroundImage = `url(${item.categoryImg})`;
         product.classList.add('category');
+
         product.addEventListener('click', () => {
             mainContent.innerHTML = '';
             infoBarDesc.textContent = '';
@@ -106,21 +113,28 @@ function showCategories(){
             mainTitle.textContent = item.categoryName;
             showProducts(item.productsList);
         })
+
         sideBar.append(product);
     });
 }
 
+//Show basket and bought products
 function showBasket(){
     document.querySelector('#page-title').innerHTML = 'Basket';
+
+    //Clean page
     mainContent.innerHTML = '';
     infoBarDesc.textContent = '';
     infoBarName.textContent = '';
     infoBar.innerHTML = '';
     mainTitle.innerHTML = '';
     sideBar.innerHTML = '';
+
     for(let key of Object.keys(localStorage)) {
         let storageItem = JSON.parse(localStorage.getItem(key));
         let productPrice = storageItem.productPrice.slice(0, -1) * storageItem.productAmount;
+
+        //Create block for one product
         let basketBlock = document.createElement('div');
         basketBlock.classList.add('basket-block');
         let basketItemBlock = document.createElement('div');
@@ -137,6 +151,8 @@ function showBasket(){
         basketItemPrice.textContent = productPrice + '$';
         basketItemPrice.classList.add('basket-text');
         basketItemBlock.append(basketItemPrice);
+
+        //Create delete button
         let basketItemDelete = document.createElement('button');
         basketItemDelete.textContent = 'X';
         basketItemDelete.classList.add('basket-text');
@@ -147,17 +163,42 @@ function showBasket(){
         })
 
 
+        //Create block for additional information
+        let basketAddInfo = document.createElement('div');
+        basketAddInfo.classList.add('add-info');
+        let addInfoTitle = document.createElement('h2');
+        addInfoTitle.textContent = 'Order Info';
+        addInfoTitle.classList.add('add-info-text');
+        let addInfoProduct = document.createElement('p');
+        addInfoProduct.textContent = `${storageItem.productName}`;
+        addInfoProduct.classList.add('add-info-text');
+        let addInfoPrice = document.createElement('p');
+        addInfoPrice.textContent = `${storageItem.productPrice} x ${storageItem.productAmount} = ${productPrice}$`;
+        addInfoPrice.classList.add('add-info-text');
+        let addInfoDate = document.createElement('p');
+        addInfoDate.textContent = `Order time: ${storageItem.productDate}`;
+        addInfoDate.classList.add('add-info-text');
+        basketAddInfo.append(addInfoTitle, addInfoProduct, addInfoPrice, addInfoDate);
+
+        //Show additional information logic
+        let enable = false;
         basketItemBlock.addEventListener('click', () => {
-            let basketMoreInfo = document.createElement('div');
-            infoBarName.textContent= `Order info: ${storageItem.productName}`;
-            infoBarDesc.textContent = `${storageItem.productPrice} x ${storageItem.productAmount} = ${productPrice}$`;
-            infoBar.append(basketMoreInfo);
+            if(enable) {
+                basketAddInfo.style.display = 'none';
+                enable = false;
+            }
+            else {
+                basketAddInfo.style.display = 'block';
+                enable = true;
+            }
         })
 
-
+        //Add to sidebar products blocks
         basketBlock.append(basketItemBlock, basketItemDelete);
         sideBar.append(basketBlock);
+        sideBar.append(basketAddInfo);
     }
+    //Create clear localstorage button
     let basketClearButton = document.createElement('button');
     basketClearButton.textContent = 'Clear basket';
     basketClearButton.classList.add('info-button');
@@ -165,13 +206,16 @@ function showBasket(){
     basketClearButton.addEventListener('click', () => {
         infoBarName.textContent = '';
         infoBarDesc.textContent = '';
-        sideBar.innerHTML = '';
         localStorage.clear();
+        showBasket();
     });
+
     sideBar.append(basketClearButton);
 }
 
+//Show categories when window loads
 window.onload = showCategories;
+
 document.querySelector('#offers').addEventListener('click', () => {
     showCategories();
 })
@@ -180,8 +224,11 @@ document.querySelector('#basket').addEventListener('click', () => {
     showBasket();
 })
 
+//Show products after choosing category
 function showProducts(products){
     products.forEach(product => {
+
+        //Create block to display product info
         let productBlock = document.createElement('div');
         productBlock.classList.add('product-block');
         let productImage = document.createElement('img');
@@ -205,27 +252,38 @@ function showProducts(products){
 
 }
 
+//Shoe additional info and buy button
 function showInfo(product){
+
     infoBarDesc.textContent = product.productInfo + '\n';
     infoBarName.textContent = product.productName;
+
+    //Create buy button
     let infoBarButton = document.createElement('button');
     infoBarButton.textContent = 'Buy';
     infoBarButton.classList.add('info-bar-button');
+
     infoBarButton.addEventListener('click', () => {
         alert(`You successfully buy ${product.productName}!`);
+
+        //Save buy products in localstorage
         if(localStorage.getItem(`${product.productName}`) !== null){
+            //To increase product amount
             product.productAmount++;
         }
         else{
             product.productAmount = 1;
         }
-        product.productDate = new Date();
+        product.productDate = new Date().toLocaleString();
         localStorage.setItem(`${product.productName}`, JSON.stringify(product));
+
+        //Clear page
         mainContent.innerHTML = '';
         infoBarDesc.textContent = '';
         infoBarName.textContent = '';
         infoBar.innerHTML = '';
         mainTitle.innerHTML = '';
     })
+
     infoBar.append(infoBarButton);
 }
