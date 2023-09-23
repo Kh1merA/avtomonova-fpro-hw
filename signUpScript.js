@@ -1,3 +1,4 @@
+//Show user info after sign up
 function userInfoFunc(userData){
     document.querySelector('#userName').textContent = userData.name;
     document.querySelector('#userSurname').textContent = userData.surname;
@@ -10,6 +11,7 @@ function userInfoFunc(userData){
     })
 }
 
+//Object to contain user data
 const userData = {
     name: '',
     surname: '',
@@ -20,18 +22,22 @@ const userData = {
     language: []
 }
 
+//Read username
 document.querySelector('#name').addEventListener('input', (e) => {
     userData.name = e.target.value;
 });
 
+//Read user surname
 document.querySelector('#surname').addEventListener('input', (e) => {
     userData.surname = e.target.value;
 });
 
+//Read user birthdate
 document.querySelector('#birthdate').addEventListener('input', (e) => {
     userData.birthdate = e.target.value;
 });
 
+//Read user sex
 document.getElementsByName('sex').forEach(radio => {
     radio.addEventListener('click', (e) => {
         if(radio.checked){
@@ -40,16 +46,19 @@ document.getElementsByName('sex').forEach(radio => {
     })
 });
 
+//Read user city
 document.querySelector('#cities').addEventListener('change', (e) => {
     for(let i = 0; i < e.target.options.length; i++){
         if(e.target.options[i].selected) userData.city = e.target.options[i].value;
     }
 });
 
+//Read user address
 document.querySelector('#address').addEventListener('input', (e) => {
    userData.address = e.target.value;
 });
 
+//Read user languages
 let lanChecks = document.querySelectorAll('input[name = "language"]');
 
 document.querySelector('#save-btn').addEventListener('click', (e) => {
@@ -60,10 +69,11 @@ document.querySelector('#save-btn').addEventListener('click', (e) => {
     })
 });
 
+//Show error and success message event
 document.querySelector('#form').addEventListener('submit', (e) => {
     window.scrollTo({
-        top: 0,  // это координат где должен быть экран
-        behavior: 'smooth'  //Это анимация
+        top: 0,
+        behavior: 'smooth'
     });
     let errorMarker = false;
     let regForm = document.getElementsByClassName('regForm')[0];
