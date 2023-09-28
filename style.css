@@ -1,0 +1,13 @@
+body{
+    display: flex;
+    gap: 30px;
+}
+
+a{
+    font-size: 24px;
+    color: black;
+}
+
+a:hover{
+    text-decoration: none;
+}
