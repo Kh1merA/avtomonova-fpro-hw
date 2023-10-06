@@ -131,8 +131,9 @@ function showBasket(){
     mainTitle.innerHTML = '';
     sideBar.innerHTML = '';
 
-    for(let key of Object.keys(localStorage)) {
-        let storageItem = JSON.parse(localStorage.getItem(key));
+    let basketContent = JSON.parse(localStorage.getItem('FreshHUBBasket'));
+
+    for(let storageItem of basketContent) {
         let productPrice = storageItem.productPrice.slice(0, -1) * storageItem.productAmount;
 
         //Create block for one product
@@ -160,7 +161,9 @@ function showBasket(){
 
         basketItemDelete.addEventListener('click', () => {
             infoBar.innerHTML = '';
-            localStorage.removeItem(key);
+            let deleteInd = basketContent.findIndex(item => item.productName === storageItem.productName);
+            basketContent.splice(deleteInd, 1);
+            localStorage.setItem('FreshHUBBasket', JSON.stringify(basketContent));
             showBasket();
         })
 
@@ -208,7 +211,7 @@ function showBasket(){
     basketClearButton.addEventListener('click', () => {
         infoBarName.textContent = '';
         infoBarDesc.textContent = '';
-        localStorage.clear();
+        localStorage.setItem('FreshHUBBasket', JSON.stringify([]));
         showBasket();
     });
 
@@ -268,16 +271,22 @@ function showInfo(product){
     infoBarButton.addEventListener('click', () => {
         alert(`You successfully buy ${product.productName}!`);
 
+        let updateBasket = localStorage.getItem('FreshHUBBasket') ? JSON.parse(localStorage.getItem('FreshHUBBasket')) : [];
+
+        product.productDate = new Date().toLocaleString();
+
+        let checkProduct = updateBasket.find(item => item.productName === product.productName);
+
         //Save buy products in localstorage
-        if(localStorage.getItem(`${product.productName}`) !== null){
+        if(checkProduct){
             //To increase product amount
-            product.productAmount++;
+            checkProduct.productAmount++;
         }
         else{
-            product.productAmount = 1;
+            updateBasket.push(product);
         }
-        product.productDate = new Date().toLocaleString();
-        localStorage.setItem(`${product.productName}`, JSON.stringify(product));
+
+        localStorage.setItem('FreshHUBBasket', JSON.stringify(updateBasket));
 
         //Clear page
         mainContent.innerHTML = '';
