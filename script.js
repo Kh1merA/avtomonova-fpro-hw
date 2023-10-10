@@ -80,17 +80,21 @@ student3.present();
 student3.present();
 
 console.log(`${student1.name}`);
+student1.getAge();
 console.log(student1.getAverageMark());
 student1.summary();
 
 console.log(`${student2.name}`);
+student2.getAge();
 console.log(student2.getAverageMark());
 student2.summary();
 
 console.log(`${student3.name}`);
+student3.getAge();
 console.log(student3.getAverageMark());
 student3.summary();
 
 console.log(`${student4.name}`);
+student4.getAge();
 console.log(student4.getAverageMark());
 student4.summary();
