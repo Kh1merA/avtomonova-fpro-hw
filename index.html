@@ -41,6 +41,44 @@
         <h3 class="product-name"></h3>
         <div class="product-description"></div>
         <div class="button-wrapper"></div>
+        <div class="order-form">
+            <h3 class="sub-logo-text">Order</h3>
+            <span class="error-form-text"></span>
+            <label for="name" class="label-text">
+                <input type="text" id="name" class="input-text" required/> Name Surname
+            </label>
+            <div class="city-block">
+                <select name="city" id="cities" class="cities-sel input-text" required>
+                    <option>Kharkiv</option>
+                    <option>Dripro</option>
+                    <option>Cherkasy</option>
+                    <option>Kyiv</option>
+                    <option>Odessa</option>
+                </select>
+                <label for="cities" class="label-text">City</label>
+            </div>
+            <label for="post-office" class="label-text">
+                <input type="text" id="post-office" class="input-text" required/> Nova Poshta
+            </label>
+            <div class="money-radio">
+                <label for="money-rd-1" class="label-text">
+                    <input type="radio" id="money-rd-1" name="money" value="Cash"/> Cash
+                </label>
+                <label for="money-rd-2" class="label-text">
+                    <input type="radio" id="money-rd-2" name="money" value="Card"/> Card
+                </label>
+            </div>
+            <label for="amount" class="label-text">
+                <input type="number" id="amount" class="input-text" required/> Amount
+            </label>
+            <textarea name="address" id="comment" cols="5" rows="2" class="input-text"></textarea>
+            <label for="comment" class="label-text">Comment</label>
+            <button class="save-order" id="save-btn">Save</button>
+        </div>
+    </div>
+</div>
+<div class="popup-black">
+    <div class="popup">
     </div>
 </div>
 <script src="script.js"></script>

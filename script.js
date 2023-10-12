@@ -77,6 +77,8 @@ let shopList = [{
     categoryImg: 'img/berries.jpg'
 }];
 
+
+
 //Init html blocks
 let mainTitle = document.getElementsByClassName('main-content__category')[0];
 let mainContent = document.getElementsByClassName('main-content__items')[0];
@@ -257,6 +259,9 @@ function showProducts(products){
 
 }
 
+
+
+
 //Show additional info and buy button
 function showInfo(product){
 
@@ -269,32 +274,106 @@ function showInfo(product){
     infoBarButton.classList.add('info-bar-button');
 
     infoBarButton.addEventListener('click', () => {
-        alert(`You successfully buy ${product.productName}!`);
+        document.querySelector('.order-form').style.display = 'flex';
 
-        let updateBasket = localStorage.getItem('FreshHUBBasket') ? JSON.parse(localStorage.getItem('FreshHUBBasket')) : [];
+        let saveButton = document.querySelector('#save-btn');
+        saveButton.removeEventListener('click', confirmOrder);
 
-        product.productDate = new Date().toLocaleString();
+        function confirmOrder(){
+            const userData = {
+                name: '',
+                city: 'Kharkiv',
+                post_office: '',
+                money: '',
+                comment: '',
+            }
 
-        let checkProduct = updateBasket.find(item => item.productName === product.productName);
+            userData.name = document.querySelector('#name').value;
+            userData.city = document.querySelector('#cities').value;
+            userData.post_office = document.querySelector('#post-office').value;
+            document.getElementsByName('money').forEach(radio => {
+                if(radio.checked){
+                    userData.money = radio.value;
+                }
+            });
+            let addAmount = +document.querySelector('#amount').value;
+            userData.comment = document.querySelector('#comment').value;
 
-        //Save buy products in localstorage
-        if(checkProduct){
-            //To increase product amount
-            checkProduct.productAmount++;
+            let checkout = true;
+
+            for(let key in userData){
+                if(userData[key] === '') {
+                    checkout = false;
+                    document.querySelector('.error-form-text').style.display = 'block';
+                    document.querySelector('.error-form-text').innerHTML = 'FILL ALL FIELDS!';
+                    break;
+                }
+            }
+
+            if(checkout){
+                alert(`You successfully buy ${product.productName}!`);
+
+                let updateBasket = localStorage.getItem('FreshHUBBasket') ? JSON.parse(localStorage.getItem('FreshHUBBasket')) : [];
+
+
+                product.productDate = new Date().toLocaleString();
+
+
+                let checkProduct = updateBasket.find(item => item.productName === product.productName);
+
+                //Save buy products in localstorage
+                if(checkProduct){
+                    //To increase product amount
+                    checkProduct.productAmount+=addAmount;
+                }
+                else{
+                    product.productAmount = addAmount;
+                    updateBasket.push(product);
+                }
+
+                localStorage.setItem('FreshHUBBasket', JSON.stringify(updateBasket));
+
+                //Clear page
+                mainContent.innerHTML = '';
+                infoBarDesc.textContent = '';
+                infoBarName.textContent = '';
+                infoBar.innerHTML = '';
+                mainTitle.innerHTML = '';
+                document.querySelector('.order-form').style.display = 'none';
+                document.querySelector('.error-form-text').style.display = 'none';
+
+                for(let key in userData){
+                    let newRow = document.createElement('div');
+                    newRow.classList.add('label-text');
+                    newRow.textContent = `${key}:   ${userData[key]}`;
+                    document.querySelector('.popup').append(newRow);
+                }
+                for(let key in product){
+                    if(key !== 'productImg'){
+                        let newRow = document.createElement('div');
+                        newRow.classList.add('label-text');
+                        newRow.textContent = `Product ${key.slice(7)}: ${product[key]}`;
+                        document.querySelector('.popup').append(newRow);
+                    }
+
+                }
+
+                document.querySelector('.popup-black').style.display = 'block';
+                document.querySelector('.popup').style.display = 'block';
+                let close = document.createElement('a');
+                close.textContent = 'Close';
+                close.classList.add('popup-close');
+                document.querySelector('.popup').append(close);
+                //Close popup
+                document.querySelector('.popup-close').addEventListener('click', () => {
+                    document.querySelector('.popup-black').style.display = 'none';
+                    document.querySelector('.popup').style.display = 'none';
+                    document.querySelector('.popup').innerHTML = '';
+                })
+                saveButton.removeEventListener('click', confirmOrder);
+            }
         }
-        else{
-            updateBasket.push(product);
-        }
-
-        localStorage.setItem('FreshHUBBasket', JSON.stringify(updateBasket));
-
-        //Clear page
-        mainContent.innerHTML = '';
-        infoBarDesc.textContent = '';
-        infoBarName.textContent = '';
-        infoBar.innerHTML = '';
-        mainTitle.innerHTML = '';
+        document.querySelector('#save-btn').addEventListener('click', confirmOrder);
     })
-
     infoBar.append(infoBarButton);
 }
