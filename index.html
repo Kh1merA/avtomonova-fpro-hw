@@ -5,9 +5,17 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
     <title>Homework</title>
 </head>
 <body>
+<label for="postId">Введіть ID поста (1-100):</label>
+<input type="number" id="postId" min="1" max="100">
+<button id="searchButton">Пошук поста</button>
 
+<div id="postContainer"></div>
+<button id="getCommentsButton">Отримати коментарі</button>
+<ul id="commentsList"></ul>
+<script src="script.js"></script>
 </body>
 </html>
